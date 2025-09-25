@@ -7,17 +7,8 @@ namespace Bookify.Domain.Bookings;
 
 public sealed class Booking : Entity
 {
-    private Booking(
-        Guid id,
-        Guid apartmentId,
-        Guid userId,
-        DateRange duration,
-        Money priceForPeriod,
-        Money cleaningFee,
-        Money amenitiesUpCharge,
-        Money totalPrice,
-        BookingStatus status,
-        DateTime createdOnUtc) : base(id)
+    private Booking(Guid id, Guid apartmentId, Guid userId, DateRange duration, Money priceForPeriod, Money cleaningFee, Money amenitiesUpCharge,
+        Money totalPrice, BookingStatus status, DateTime createdOnUtc) : base(id)
     {
         ApartmentId = apartmentId;
         UserId = userId;
@@ -49,22 +40,11 @@ public sealed class Booking : Entity
     public DateTime? CancelledOnUtc { get; private set; }
 
 
-    public static Booking Reserve(
-        Apartment apartment,
-        Guid userId,
-        DateRange duration,
-        DateTime utcNow,
-        PricingService pricingService)
+    public static Booking Reserve(Apartment apartment, Guid userId, DateRange duration, DateTime utcNow, PricingService pricingService)
     {
         var pricingDetails = pricingService.CalculatePrice(apartment, duration);
 
-        var booking = new Booking(
-            Guid.NewGuid(),
-            apartment.Id,
-            userId,
-            duration,
-            pricingDetails.PriceForPeriod,
-            pricingDetails.CleaningFee,
+        var booking = new Booking(Guid.NewGuid(), apartment.Id, userId, duration, pricingDetails.PriceForPeriod, pricingDetails.CleaningFee,
             pricingDetails.AmenitiesUpCharge,
             pricingDetails.TotalPrice,
             BookingStatus.Reserved,
