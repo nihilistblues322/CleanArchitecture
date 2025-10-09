@@ -17,7 +17,7 @@ public class LoggingBehavior<TRequest, TResponse>(ILogger<TRequest> logger) : IP
         {
             logger.LogInformation("Executing command {Command}", name);
 
-            var result = await next();
+            var result = await next(cancellationToken);
 
             logger.LogInformation("Command {Command} processed successfully", name);
 
