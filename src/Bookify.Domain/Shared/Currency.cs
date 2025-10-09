@@ -8,7 +8,7 @@ public record Currency
 
     private Currency(string code) => Code = code;
 
-    private string Code { get; init; }
+    public string Code { get; init; }
 
     public static Currency FromCode(string code)
     {
