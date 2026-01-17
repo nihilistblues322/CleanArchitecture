@@ -40,7 +40,7 @@ public static class SeedDataExtensions
 
         const string sql = """
                            INSERT INTO public.apartments
-                           ("Id", "Name", "Description", "Address_Country", "Address_State", "Address_ZipCode", "Address_City", "Address_Street", "Price_Amount", "Price_Currency", "CleaningFee_Amount", "CleaningFee_Currency", "Amenities", "LastBookedOnUtc")
+                           (id, "name", description, address_country, address_state, address_zip_code, address_city, address_street, price_amount, price_currency, cleaning_fee_amount, cleaning_fee_currency, amenities, last_booked_on_utc)
                            VALUES(@Id, @Name, @Description, @Country, @State, @ZipCode, @City, @Street, @PriceAmount, @PriceCurrency, @CleaningFeeAmount, @CleaningFeeCurrency, @Amenities, @LastBookedOn);
                            """;
 

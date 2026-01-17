@@ -24,7 +24,7 @@ public static class DependencyInjection
         services.AddTransient<IEmailService, EmailService>();
 
         var connectionString = configuration.GetConnectionString("Database") ?? throw new ArgumentNullException(nameof(configuration));
-        services.AddDbContext<ApplicationDbContext>(o => o.UseNpgsql(connectionString));
+        services.AddDbContext<ApplicationDbContext>(o => o.UseNpgsql(connectionString).UseSnakeCaseNamingConvention());
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IApartmentRepository, ApartmentRepository>();

@@ -22,10 +22,10 @@ if (app.Environment.IsDevelopment())
     app.SeedData();
 }
 
-app.UseHttpsRedirection();
-
 app.UseAuthorization();
+
+app.UseCustomExceptionHandler();
 
 app.MapControllers();
 
-app.Run();  
+app.Run();
