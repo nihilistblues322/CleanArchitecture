@@ -27,4 +27,11 @@ public sealed class User : Entity
         user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
         return user;
     }
+
+    public string IdentityId { get; private set; } = string.Empty;
+
+    public void SetIdentityId(string identityId)
+    {
+        IdentityId = identityId;
+    }
 }

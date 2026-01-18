@@ -22,9 +22,10 @@ if (app.Environment.IsDevelopment())
     app.SeedData();
 }
 
-app.UseAuthorization();
-
 app.UseCustomExceptionHandler();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

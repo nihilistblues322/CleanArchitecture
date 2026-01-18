@@ -3,7 +3,7 @@ using Bookify.Application.Bookings.ReserveBooking;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Bookify.Api.Bookings;
+namespace Bookify.Api.Controllers.Bookings;
 
 [ApiController]
 [Route("api/bookings")]
