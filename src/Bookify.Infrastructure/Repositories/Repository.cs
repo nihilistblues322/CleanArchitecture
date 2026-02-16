@@ -10,7 +10,7 @@ public abstract class Repository<T>(ApplicationDbContext context) where T : Enti
         return await context.Set<T>().FirstOrDefaultAsync(user => user.Id == id, cancellationToken);
     }
 
-    public void Add(T entity)
+    public virtual void Add(T entity)
     {
         context.Add(entity);
     }
