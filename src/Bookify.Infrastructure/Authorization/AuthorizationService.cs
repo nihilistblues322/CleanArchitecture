@@ -19,4 +19,15 @@ internal sealed class AuthorizationService(ApplicationDbContext context)
 
         return roles;
     }
+
+
+    public async Task<HashSet<string>> GetPermissionsForUserAsync(string identityId)
+    {
+        var permissions = await context.Set<User>()
+            .Where(u => u.IdentityId == identityId)
+            .SelectMany(u => u.Roles.Select(r => r.Permissions))
+            .FirstAsync();
+
+        return permissions.Select(p => p.Name).ToHashSet();
+    }
 }
